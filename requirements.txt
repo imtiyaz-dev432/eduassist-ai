@@ -1,0 +1,10 @@
+Flask
+Flask-SQLAlchemy
+Flask-JWT-Extended
+Flask-CORS
+python-dotenv
+Werkzeug
+requests
+gunicorn
+psycopg2-binary
+Flask-Migrate
