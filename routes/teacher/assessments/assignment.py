@@ -7,7 +7,7 @@ from models.institute import Institution
 from models.batch import Batch
 from models.assignment import Assignment
 
-assignment_bp=Blueprint("assignment_bp",__name__,url_prefix="/assignment")
+assignment_bp=Blueprint("assignment_bp",__name__,url_prefix="/teacher/assessments/assignment")
 @assignment_bp.route("/add/<int:batch_id>",methods=['POST'])
 @jwt_required()
 def add_assignment(batch_id):
@@ -42,6 +42,7 @@ def add_assignment(batch_id):
 
     title=data.get("title")
     description=data.get("description")
+    file_url=data.get("file_url")
     due_date=data.get("due_date")
     max_marks=data.get("max_marks")
     status=data.get("status","Active")
@@ -63,6 +64,7 @@ def add_assignment(batch_id):
         batch_id=batch.id,
         title=title,
         description=description,
+        file_url=file_url,
         due_date=due_date_obj,
         max_marks=max_marks,
         status=status
@@ -146,6 +148,7 @@ def update_assignment(assignment_id):
         }),400
     title=data.get("title",assignment.title)
     description=data.get("description",assignment.description)
+    assignment.file_url = data.get("file_url", assignment.file_url)
     due_date=data.get("due_date")
     max_marks=data.get("max_marks",assignment.max_marks)
     status=data.get("status",assignment.status)

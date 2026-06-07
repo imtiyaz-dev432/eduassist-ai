@@ -16,6 +16,11 @@ class QuizSubmissionAnswer(db.Model):
         db.ForeignKey("quiz_questions.id"),
         nullable=False
     )
+    student_id=db.Column(
+        db.Integer,
+        db.ForeignKey("students.id"),
+        nullable=False
+    )
     student_answer = db.Column(db.String(500), nullable=True)
     is_correct = db.Column(db.Boolean, nullable=True)
     marks_awarded = db.Column(db.Float, nullable=True)
@@ -33,6 +38,7 @@ class QuizSubmissionAnswer(db.Model):
             "id": self.id,
             "quiz_submission_id": self.quiz_submission_id,
             "quiz_question_id": self.quiz_question_id,
+            "student_id": self.student_id,
             "student_answer": self.student_answer,
             "is_correct": self.is_correct,
             "marks_awarded": self.marks_awarded,

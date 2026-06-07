@@ -11,7 +11,7 @@ class Quiz(db.Model):
     topic = db.Column(db.String(200), nullable=True)
     difficulty = db.Column(db.String(50), default="Easy")
     total_marks = db.Column(db.Integer, nullable=True)
-    status = db.Column(db.String(50), default="Draft")    
+    status = db.Column(db.String(50), default="Active")    
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(
         db.DateTime,

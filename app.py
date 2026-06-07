@@ -36,11 +36,21 @@ from routes.teacher.finance.payment import payment_bp
 from routes.teacher.operations.attendance import attendance_bp
 from routes.teacher.finance.fee_reminder import fee_reminder_bp
 from routes.teacher.assessments.assignment import assignment_bp
-from routes.teacher.assessments.assignment_subbmission import assignment_submission_bp
 from routes.teacher.assessments.quize import quiz_bp
 from routes.teacher.assessments.quiz_question import quiz_question_bp
 from routes.student_auth import student_auth_bp
-
+from routes.student.assessments.assignment import student_assignment_bp
+from routes.student.assessments.assignment_submission import student_assignment_submission_bp
+from routes.teacher.assessments.assignment_subbmission import teacher_submission_check_bp
+from routes.student.dashboard import student_dashboard_bp
+from routes.student.finance.fee import student_fee_bp
+from routes.student.finance.payment  import student_payment_bp
+from routes.student.operation.attendance import student_attendance_bp
+from routes.student.assessments.assignment_view_submission import assignment_submission_view_bp
+from routes.student.assessments.quiz import student_quiz_bp
+from routes.student.assessments.quiz_question import student_quiz_question_bp
+from routes.student.assessments.quiz_submission import student_quiz_submission_bp
+from routes.teacher.assessments.quiz_submission import teacher_quiz_view_bp
 app=Flask(__name__)
 app.config.from_object(Config)
 CORS(app)
@@ -71,15 +81,26 @@ app.register_blueprint(payment_bp)
 app.register_blueprint(attendance_bp)
 app.register_blueprint(fee_reminder_bp)
 app.register_blueprint(assignment_bp)
-app.register_blueprint(assignment_submission_bp)
 app.register_blueprint(quiz_bp)
 app.register_blueprint(quiz_question_bp)
 app.register_blueprint(student_auth_bp)
+app.register_blueprint(student_assignment_bp)
+app.register_blueprint(student_assignment_submission_bp)
+app.register_blueprint(teacher_submission_check_bp)
+app.register_blueprint(student_dashboard_bp)
+app.register_blueprint(student_fee_bp)
+app.register_blueprint(student_payment_bp)
+app.register_blueprint(student_attendance_bp)
+app.register_blueprint(assignment_submission_view_bp)
+app.register_blueprint(student_quiz_bp)
+app.register_blueprint(student_quiz_question_bp)
+app.register_blueprint(student_quiz_submission_bp)
+app.register_blueprint(teacher_quiz_view_bp)
 @app.route("/",methods=["GET"])
 def home():
     return jsonify({
         "message":"eduassist ai is running successfully"
     }),200
-
+# https://chatgpt.com/share/6a2410fe-cc9c-83ab-990a-6a0cafb95be8
 if __name__ == "__main__":
     app.run(debug=True)

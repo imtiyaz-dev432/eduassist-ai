@@ -7,7 +7,7 @@ from models.institute import Institution
 from models.student import Student
 from models.attendance import Attendance
 
-attendance_bp=Blueprint("attendance_bp",__name__,url_prefix="/attendance")
+attendance_bp=Blueprint("attendance_bp",__name__,url_prefix="/teacher/operation/attendance")
 @attendance_bp.route("/mark/<int:student_id>",methods=["POST"])
 @jwt_required()
 def mark_attendence(student_id):

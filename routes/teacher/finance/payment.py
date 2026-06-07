@@ -8,7 +8,7 @@ from models.payment import Payment
 from models.student import Student
 from models.fee import Fee
 
-payment_bp=Blueprint("payment_bp",__name__,url_prefix="/payment")
+payment_bp=Blueprint("payment_bp",__name__,url_prefix="/teacher/payment")
 @payment_bp.route("/create/<int:fee_id>",methods=["POST"])
 @jwt_required()
 def add_payment(fee_id):

@@ -9,6 +9,7 @@ class Assignment(db.Model):
     batch_id=db.Column(db.Integer,db.ForeignKey("batches.id"),nullable=False)
     title=db.Column(db.String(200),nullable=False)
     description=db.Column(db.Text,nullable=True)
+    file_url = db.Column(db.Text, nullable=True)
     due_date=db.Column(db.Date,nullable=True)
     max_marks=db.Column(db.Integer,nullable=True)
     status = db.Column(db.String(50), default="Active")
@@ -32,6 +33,7 @@ class Assignment(db.Model):
             "batch_id": self.batch_id,
             "title": self.title,
             "description": self.description,
+            "file_url":self.file_url,
             "due_date": self.due_date.isoformat() if self.due_date else None,
             "max_marks": self.max_marks,
             "status": self.status,
