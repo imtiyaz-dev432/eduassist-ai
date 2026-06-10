@@ -98,7 +98,10 @@ def login():
             "message":"Invalid email/mobile or password"
         }),401
 
-    access_token=create_access_token(identity=str(user.id))    
+    access_token=create_access_token(identity=str(user.id),
+    additional_claims={
+        "role": "owner"
+    })    
 
     return jsonify({
     "success": True,

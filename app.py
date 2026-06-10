@@ -51,6 +51,10 @@ from routes.student.assessments.quiz import student_quiz_bp
 from routes.student.assessments.quiz_question import student_quiz_question_bp
 from routes.student.assessments.quiz_submission import student_quiz_submission_bp
 from routes.teacher.assessments.quiz_submission import teacher_quiz_view_bp
+from routes.teacher.leads import lead_bp
+from routes.teacher.faq import teacher_faq_bp
+from routes.teacher.chat_history import chat_history_bp
+from routes.ai.admission_bot import admission_bot_bp
 app=Flask(__name__)
 app.config.from_object(Config)
 CORS(app)
@@ -96,6 +100,10 @@ app.register_blueprint(student_quiz_bp)
 app.register_blueprint(student_quiz_question_bp)
 app.register_blueprint(student_quiz_submission_bp)
 app.register_blueprint(teacher_quiz_view_bp)
+app.register_blueprint(teacher_faq_bp)
+app.register_blueprint(lead_bp)
+app.register_blueprint(chat_history_bp)
+app.register_blueprint(admission_bot_bp)
 @app.route("/",methods=["GET"])
 def home():
     return jsonify({
